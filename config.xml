@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+	xmlns:gap = "http://phonegap.com/ns/1.0"
+	id        = "com.phonegap.example"
+	version   = "1.0.0">
+	
+	<name>シームレス地質図</name>
+	
+	<description></description>
+	<author href="http://www.cubeworks.co.jp/" email="kitao@cubeworks.co.jp">
+	CubeWorks Inc.
+	</author>
+	
+	<access origin="http://maps.google.com" subdomains="true" />
+	<access origin="http://googleapis.com" subdomains="true" />
+	<access origin="http://gstatic.com" subdomains="true" />
+	<access origin="http://riodb02.ibase.aist.go.jp" subdomains="true" />
+</widget>
