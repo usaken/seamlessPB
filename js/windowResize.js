@@ -7,6 +7,7 @@ $(document).ready(function(){
 							'height' : '100%'
 						});
 	};
+	
 	resize();
 	$( window ).resize( function(){
 		resize();
