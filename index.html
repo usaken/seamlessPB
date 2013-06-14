@@ -38,31 +38,6 @@ div.balloon div.title	{
 <body>
 <div>
 	<div id="gmap"></div>
-	<form method="get" action="#" id="setting">
-	<ul>
-		<li>
-			<input type="radio" name="type" value="basic" id="basic" checked="checked" /> <label for="basic">基本版</label>
-			<input type="radio" name="type" value="detailed" id="detailed" /> <label for="detailed">詳細版</label>
-		</li>
-		<li>
-			<select name="opacity" id="opacity" />
-				<option value="0">0%</option>
-				<option value="20">20%</option>
-				<option value="40">40%</option>
-				<option value="60" selected="selected">60%</option>
-				<option value="80">80%</option>
-				<option value="100">100%</option>
-			</select>
-		</li>
-		<li class="buttons">
-			<img id="zoom_up" src="img/plus.png" />
-			<img id="zoom_down" src="img/minus.png" />
-			<img id="gps_single" src="img/do.png" />
-			<img id="gps_start" src="img/start.png" />
-			<img id="gps_stop" src="img/stop.png" />
-		</li>
-	</ul>
-	</form>
 </div>
 
 <script type="text/javascript">
@@ -136,24 +111,6 @@ $(document).ready(function(){
 <script type="text/javascript">
 //<![CDATA[
 //********************************************************************************
-//拡大・縮小
-//********************************************************************************
-$(document).ready(function(){
-	$( '#zoom_up' ).click(function(){
-		var zoom = gmap.getZoom();
-		gmap.setZoom( zoom + 1 );
-	});
-	$( '#zoom_down' ).click(function(){
-		var zoom = gmap.getZoom();
-		gmap.setZoom( zoom - 1 );
-	});
-});
-//]]>
-</script>
-
-<script type="text/javascript">
-//<![CDATA[
-//********************************************************************************
 //GPS動作確認
 //********************************************************************************
 $(document).ready(function(){
@@ -166,59 +123,9 @@ $(document).ready(function(){
 		var position = new google.maps.LatLng(latitude_, longitude_);
 		marker.setPosition( position );
 		marker.setMap( gmap );
-		gmap.setZoom( 18 );
-		gmap.setCenter( position );
+		//gmap.setZoom( 18 );
+		//gmap.setCenter( position );
 	};
-	var doGps = function ( type_ ) {
-		if ( typeof navigator.geolocation === 'undefined' ) {
-			alert( 'この端末は位置情報取得に対応していません。' );
-		} else {
-			if ( typeof balloon !== 'undefined' ) {
-				balloon.close();
-			}
-			//GPSオプション
-			var option = {};
-			switch ( type_ ) {
-				case 'single':
-					navigator.geolocation.getCurrentPosition(
-						function ( position_ ) {
-							doMarker( position_.coords.latitude, position_.coords.longitude );
-						},
-						function ( error_ ) {
-						},
-						option
-					);
-					break;
-				case 'start':
-					gpsId = navigator.geolocation.watchPosition(
-						function ( position_ ) {
-							doMarker( position_.coords.latitude, position_.coords.longitude );
-						},
-						function ( error_ ) {
-						},
-						option
-					);
-					break;
-				case 'stop':
-					if ( gpsId !== false ) {
-						navigator.geolocation.clearWatch( gpsId );
-					}
-					gpsId = false;
-					break;
-				default:
-					//上記以外は何もしない
-			};
-		}
-	};
-	$( '#gps_single' ).click(function(){
-		doGps( 'single' );
-	});
-	$( '#gps_start' ).click(function(){
-		doGps( 'start' );
-	});
-	$( '#gps_stop' ).click(function(){
-		doGps( 'stop' );
-	});
 });
 //]]>
 </script>
@@ -232,15 +139,11 @@ $(document).ready(function(){
 	var seamless = project( gmap );
 	//デフォルト（フォームで指定した値）
 	var toggle = function () {
-						var type = $( '#setting input[name=type]:checked' ).val();
-						var opacity = parseInt( $('#opacity').val(), 10 ) / 100;
+						var type = ’basic’;
+						var opacity = 0.6;
 						seamless.switchTile( type,　opacity );
 					};
 	toggle();
-	//フォームの値変更でオーバーレイ上書き
-	$( '#setting input, #setting select' ).change(function(){
-		toggle();
-	});
 });
 //]]>
 </script>
