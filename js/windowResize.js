@@ -5,7 +5,7 @@ $(document).ready(function(){
 		//var menuHeight = 100;
 		$( '#gmap' ).css({
 							'width' : '100%',
-							'height' : '100%'
+							'height' : String(windowHeight) + 'px'
 						});
 		/*
 		if ( windowWidth + windowHeight <= 1000 ) {
