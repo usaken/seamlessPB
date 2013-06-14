@@ -54,13 +54,6 @@ div.balloon div.title	{
 				<option value="100">100%</option>
 			</select>
 		</li>
-		<li class="buttons">
-			<img id="zoom_up" src="img/plus.png" />
-			<img id="zoom_down" src="img/minus.png" />
-			<img id="gps_single" src="img/do.png" />
-			<img id="gps_start" src="img/start.png" />
-			<img id="gps_stop" src="img/stop.png" />
-		</li>
 	</ul>
 	</form>
 </div>
@@ -232,8 +225,8 @@ $(document).ready(function(){
 	var seamless = project( gmap );
 	//デフォルト（フォームで指定した値）
 	var toggle = function () {
-						var type = $( '#setting input[name=type]:checked' ).val();
-						var opacity = parseInt( $('#opacity').val(), 10 ) / 100;
+						var type = 'basic';
+						var opacity = 0.6;
 						seamless.switchTile( type,　opacity );
 					};
 	toggle();
