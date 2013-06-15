@@ -21,9 +21,10 @@ var project = function ( gmap_ ) {
 								"alt" : '',
 								"tileSize" : new google.maps.Size ( 256, 256 ),
 								"getTileUrl" : function ( coord_, zoom_ ) {
-													var url = 'http://riodb02.ibase.aist.go.jp'
+													var url = 'https://gbank.gsj.jp'
 															+ '/'
-															+ 'db084/'
+															+ 'seamless/'
+															+ 'tilemap/'
 															+ 'basic/'
 															+ 'glfn/'
 															+ String ( zoom_ ) + '/'
@@ -41,10 +42,11 @@ var project = function ( gmap_ ) {
 								"alt" : '',
 								"tileSize" : new google.maps.Size ( 256, 256 ),
 								"getTileUrl" : function ( coord_, zoom_ ) {
-													var url = 'http://riodb02.ibase.aist.go.jp'
+													var url = 'https://gbank.gsj.jp'
 															+ '/'
-															+ 'db084/'
-															+ 'detailed/'
+															+ 'seamless/'
+															+ 'tilemap/'
+															+ 'basic/'
 															+ 'glfn/'
 															+ String ( zoom_ ) + '/'
 															+ String ( coord_.y ) + '/'

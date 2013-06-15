@@ -73,9 +73,8 @@ $(document).ready(function(){
 	google.maps.event.addListener( gmap, 'click', function( event_ ) {
 		var latitude = event_.latLng.lat();
 		var longitude = event_.latLng.lng();
-		var path = 'http://riodb02.ibase.aist.go.jp/db084/php/featureinfo.php';
+		var path = 'https://gbank.gsj.jp/seamless/tilemap/basic/g';
 		var query = {
-					'type' : $( '#setting input[name=type]:checked' ).val(),
 					'latlng' : String( latitude ) + ',' + String( longitude )
 				};
 		$.ajax({
